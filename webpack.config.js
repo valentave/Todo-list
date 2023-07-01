@@ -7,9 +7,9 @@ module.exports = {
         index: './src/index.js',
     },
     plugins: [
-//      new MiniCssExtractPlugin({
-//        filename: 'style.css',
-//      }),
+      new MiniCssExtractPlugin({
+        filename: 'style.css',
+      }),
     ],
     output: {
         filename: 'bundle.js',
@@ -18,8 +18,8 @@ module.exports = {
     module: {
       rules: [
         {
-          test: /\.css$/,
-          use: [MiniCssExtractPlugin.loader, 'css-loader'],
+          test: /\.css$/i,
+          use: [MiniCssExtractPlugin.loader, "css-loader"],
         },
         {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
