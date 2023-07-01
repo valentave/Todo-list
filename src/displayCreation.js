@@ -61,7 +61,7 @@ export function displayCreateTask() {
     const $createButtonContainer = document.createElement('div');
     $createButtonContainer.classList.add('creation__addButton');
     $createButtonContainer.innerHTML = `
-        <button class="btn-addTask">Add task</button>
+        <button class="btn-addTask btn-add">Add task</button>
     `
     $content.appendChild($createButtonContainer);
 
@@ -84,7 +84,7 @@ export function displayCreateProject() {
     const $createButtonContainer = document.createElement('div');
     $createButtonContainer.classList.add('creation__addButton');
     $createButtonContainer.innerHTML = `
-        <button class="btn-addTask">Add project</button>
+        <button class="btn-addTask btn-add">Add project</button>
     `
     $content.appendChild($createButtonContainer);
 
