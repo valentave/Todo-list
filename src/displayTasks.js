@@ -30,14 +30,15 @@ export function displayTasks(tab = 'Home') {
 
     for (let i = 0; i < newTasks.length; i++) {
         const task = document.createElement('div');
+        const formatedDate = formatDate(newTasks[i].date);
         task.classList.add('task');
 
         task.innerHTML = `
-            <div class="task-${newTasks[i].prio}"></div>
+            <div class="task-${newTasks[i].priority}"></div>
             <input type="checkbox" name="task-check" class="task-check">
             <p class="task-title">${newTasks[i].title}</p>
             <button class="task-details-btn">Details</button>
-            <p class="task-title">${newTasks[i].date}</p>
+            <p class="task-title">${formatedDate}</p>
             <button class="task-edit-btn">Edit</button>
             <button class="task-delete-btn">Delete</button>
         `
@@ -90,6 +91,52 @@ function compareMonths(task) {
     return todayMonth === taskMonth
 }
 
-function compareProjects() {
+function formatDate(timestamp) {
+    let date = new Date(timestamp);
+    let day = date.getDate();
+    let month = date.getMonth();
+    let year = date.getFullYear();
+    let monthString = '';
 
+    switch (month) {
+        case 0:
+            monthString = 'January';
+            break;
+        case 1:
+            monthString = 'February';
+            break;
+        case 2:
+            monthString = 'March';
+            break;
+        case 3:
+            monthString = 'April';
+            break;
+        case 4:
+            monthString = 'May';
+            break;
+        case 5:
+            monthString = 'June';
+            break;
+        case 6:
+            monthString = 'July';
+            break;
+        case 7:
+            monthString = 'August';
+            break;
+        case 8:
+            monthString = 'September';
+            break;
+        case 9:
+            monthString = 'October';
+            break;
+        case 10:
+            monthString = 'November';
+            break;
+        case 11:
+            monthString = 'December';
+            break;
+    }
+
+    let dateString = monthString + ' ' + day + ', ' + year;
+    return dateString
 }

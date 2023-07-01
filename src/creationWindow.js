@@ -3,7 +3,7 @@ import { closeWindow } from "./closeWindow.js";
 import { showErrorMessage, hideErrorMessage } from "./errorMessages.js";
 import { createTask } from "./createTask.js";
 import { createProject } from "./createProject.js";
-import { $content } from "./index.js";
+import { $content, tasks } from "./index.js";
 
 export const projects = ['study','sports'];
 
@@ -38,9 +38,13 @@ $creationWindow.addEventListener('click', function(event) {
                 hideErrorMessage($formDate);
 
                 // Create and display the task
-                createTask($formTitle.value, $formDetails.value, $formDate.value, $prioLow.checked, $prioMedium.checked, $prioHigh.checked, $formProjectSelect.value);
-                const form = $creationWindow.querySelector('.creation__form');
-                form.reset();
+                if (tasks.some(element => element.title === $formTitle.value)) {
+                    showErrorMessage($formTitle);
+                } else {
+                    createTask($formTitle.value, $formDetails.value, $formDate.value, $prioLow.checked, $prioMedium.checked, $prioHigh.checked, $formProjectSelect.value);
+                    const form = $creationWindow.querySelector('.creation__form');
+                    form.reset();
+                }
             } 
             if(!isTitleValid) {
                 showErrorMessage($formTitle);
@@ -61,9 +65,9 @@ $creationWindow.addEventListener('click', function(event) {
                     showErrorMessage($formTitle);
                 } else {
                     createProject($formTitle.value);
+                    const form = $creationWindow.querySelector('.creation__form');
+                    form.reset();
                 }
-                const form = $creationWindow.querySelector('.creation__form');
-                form.reset();
             } else {
                 showErrorMessage($formTitle);
             }

@@ -44,7 +44,7 @@ export function displayCreateTask() {
     $form.innerHTML = `
         <label for="form-title">Title:</label>
         <input type="text" name="title" id="form-title" required>
-        <p class="error-message" style="opacity: 0">A title is required!</p>
+        <p class="error-message" style="opacity: 0">Add a title that is not repeated!</p>
         <label for="form-details">Details:</label>
         <textarea type="text" name="details" id="form-details"></textarea>
         <label for="form-date">Due date:</label>
