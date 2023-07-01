@@ -32,7 +32,10 @@ $content.addEventListener('click', function(event) {
     const target = event.target;
 
     if (target.classList.contains('task-delete-btn')) {
-        // deleteTask(title)
+        const taskTitle = target.parentNode.querySelector('.task-title').textContent;
+        const taskIndex = tasks.findIndex(element => element.title === taskTitle);
+        tasks.splice(taskIndex, 1);
+        displayTasks();
     }
 
     if (target.classList.contains('task-edit-btn')) {
@@ -41,7 +44,7 @@ $content.addEventListener('click', function(event) {
 
     if (target.classList.contains('task-details-btn')) {
         const taskTitle = target.parentNode.querySelector('.task-title').textContent;
-        const $selectedTask = tasks.find(element => element.title === taskTitle)
+        const $selectedTask = tasks.find(element => element.title === taskTitle);
         displayDetails($selectedTask);
     }
 

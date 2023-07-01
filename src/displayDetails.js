@@ -7,7 +7,7 @@ export function displayDetails(task) {
         <div class="task-details-container">
             <header class="task-details-header">
                 <h2 class="task-title">${task.title}</h2>
-                <button class="creation__button btn-close-details   ">X</button>
+                <button class="creation__button btn-close-details">X</button>
             </header>
             <main class="task-details-main">
                 <p class="task-details">${task.details}</p>
