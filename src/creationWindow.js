@@ -38,7 +38,7 @@ $creationWindow.addEventListener('click', function(event) {
                 hideErrorMessage($formDate);
 
                 // Create and display the task
-                createTask($formTitle.value, $formDetails.value, $formDate.value, $prioLow.checked, $prioMedium.checked, $prioHigh.checked, $formProjectSelect);
+                createTask($formTitle.value, $formDetails.value, $formDate.value, $prioLow.checked, $prioMedium.checked, $prioHigh.checked, $formProjectSelect.value);
                 const form = $creationWindow.querySelector('.creation__form');
                 form.reset();
             } 

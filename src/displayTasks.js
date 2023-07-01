@@ -1,7 +1,7 @@
 import { $content } from "./index.js";
 import { tasks } from "./index.js";
 
-export function displayTasks(tab = 'Default') {
+export function displayTasks(tab = 'Home') {
     $content.innerHTML = "";
     const container = document.createElement('div');
     container.classList.add('task-container');
@@ -11,13 +11,13 @@ export function displayTasks(tab = 'Default') {
     if (tab === 'Today') {
         newTasks = tasks.filter(compareDates);
     }
-    else if (tab === 'This week') {
+    else if (tab === 'This Week') {
         newTasks = tasks.filter(compareWeeks);
     }
-    else if (tab === 'This month') {
+    else if (tab === 'This Month') {
         newTasks = tasks.filter(compareMonths);
     }
-    else if (tab !== 'Default') {
+    else if (tab !== 'Home') {
         newTasks = tasks.filter(task => task.project === tab);
     }
     else {
@@ -52,7 +52,7 @@ function compareDates (task) {
     let today = new Date();
 
     let day = today.getDate();
-    let month = today.getMonth() + 1;
+    let month = today.getMonth();
     let year = today.getFullYear();
 
     let todayReset = new Date(year, month, day);

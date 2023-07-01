@@ -1,4 +1,5 @@
 import { Task } from "./Task.js";
+import { displayProjects } from "./displayProjects.js";
 import { displayTasks } from "./displayTasks.js";
 import { tasks } from "./index.js";
 
@@ -19,5 +20,6 @@ export function createTask(title, details, date, priolow, priomedium, priohigh, 
 
     const task = new Task(title, details, timestamp, prio, project);
     tasks.push(task);
-    displayTasks(project);
+    displayTasks();
+    displayProjects();
 }
