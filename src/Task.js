@@ -1,9 +1,10 @@
 export class Task {
-    constructor(title, details, date, priority) {
+    constructor(title, details, date, priority, project = 'Default') {
         this._title = title;
         this._details = details;
         this._date = date;
         this._priority = priority; 
+        this._project = project;
     }
 
     set title(ttl) {
@@ -32,5 +33,12 @@ export class Task {
     }
     get priority() {
         return this._priority
+    }
+
+    set project(pjct) {
+        this._project = pjct;
+    }
+    get project() {
+        return this._project
     }
 }

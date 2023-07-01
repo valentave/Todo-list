@@ -2,10 +2,13 @@ import { displayCreation, displayCreateTask, displayCreateProject } from "./disp
 import { closeWindow } from "./closeWindow.js";
 import { showErrorMessage, hideErrorMessage } from "./errorMessages.js";
 import { createTask } from "./createTask.js";
+import { createProject } from "./createProject.js";
 import { $content } from "./index.js";
 
+export const projects = ['study','sports'];
+
 export const $creationWindow = document.createElement('div');
-$creationWindow.classList.add('creation-window');
+$creationWindow.classList.add('creation-window');  
 $creationWindow.appendChild(displayCreation());
 $creationWindow.firstChild.lastChild.appendChild(displayCreateTask());
 
@@ -27,14 +30,15 @@ $creationWindow.addEventListener('click', function(event) {
             const isDateValid = $formDate.checkValidity();
             if (isTitleValid && isDateValid) {
                 const $formDetails = $creationWindow.querySelector('#form-details');
+                const $formProjectSelect = $creationWindow.querySelector('#form-project-list');
                 const $prioLow = $creationWindow.querySelector('#prio-low');
                 const $prioMedium = $creationWindow.querySelector('#prio-medium');
                 const $prioHigh = $creationWindow.querySelector('#prio-high');
                 hideErrorMessage($formTitle);
                 hideErrorMessage($formDate);
-                // Create the task
-                createTask($formTitle.value, $formDetails.value, $formDate.value, $prioLow.checked, $prioMedium.checked, $prioHigh.checked);
 
+                // Create and display the task
+                createTask($formTitle.value, $formDetails.value, $formDate.value, $prioLow.checked, $prioMedium.checked, $prioHigh.checked, $formProjectSelect);
                 const form = $creationWindow.querySelector('.creation__form');
                 form.reset();
             } 
@@ -51,10 +55,15 @@ $creationWindow.addEventListener('click', function(event) {
             if (isTitleValid) {
                 closeWindow($content, $creationWindow);
                 hideErrorMessage($formTitle);
+
+                // Create and display the project
+                if(projects.includes($formTitle.value)){
+                    showErrorMessage($formTitle);
+                } else {
+                    createProject($formTitle.value);
+                }
                 const form = $creationWindow.querySelector('.creation__form');
                 form.reset();
-                // CREAR PROJECT
-
             } else {
                 showErrorMessage($formTitle);
             }
