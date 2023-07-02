@@ -5,7 +5,7 @@ import { createTask } from "./createTask.js";
 import { createProject } from "./createProject.js";
 import { $content, tasks } from "./index.js";
 
-export const projects = ['study','sports'];
+export const projects = ['Study','Sports'];
 
 export const $creationWindow = document.createElement('div');
 $creationWindow.classList.add('creation-window');  
