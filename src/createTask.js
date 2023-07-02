@@ -20,6 +20,6 @@ export function createTask(title, details, date, priolow, priomedium, priohigh, 
 
     const task = new Task(title, details, timestamp, prio, project);
     tasks.push(task);
-    displayTasks();
-    displayProjects();
+    displayTasks(project);
+    displayProjects(project);
 }

@@ -3,6 +3,7 @@ import { $creationWindow, projects } from './creationWindow.js'
 import { displayDetails } from './displayDetails.js';
 import { displayProjects } from './displayProjects.js';
 import { displayTasks } from './displayTasks.js';
+import { editTask, $editWindow } from './editTask.js';
 import './style/style.css';
 
 export const $content = document.querySelector('.content');
@@ -34,12 +35,15 @@ $content.addEventListener('click', function(event) {
     if (target.classList.contains('task-delete-btn')) {
         const taskTitle = target.parentNode.querySelector('.task-title').textContent;
         const taskIndex = tasks.findIndex(element => element.title === taskTitle);
+        const taskProject = tasks[taskIndex].project;
         tasks.splice(taskIndex, 1);
-        displayTasks();
+        displayTasks(taskProject);
     }
 
     if (target.classList.contains('task-edit-btn')) {
-        //editTask(taskNode)
+        const taskTitle = target.parentNode.querySelector('.task-title').textContent;
+        const taskIndex = tasks.findIndex(element => element.title === taskTitle);
+        editTask(tasks[taskIndex]);
     }
 
     if (target.classList.contains('task-details-btn')) {

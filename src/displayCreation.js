@@ -35,7 +35,7 @@ export function displayCreation() {
     return $container;
 }
 
-export function displayCreateTask() {
+export function displayCreateTask(mode = 'create', title = '', details = '', date = '', priolow = 'checked', priomedium = '', priohigh = '', project = 'Home') {
     const $content = document.createElement('section');
     $content.classList.add('creation__form-container');
     $content.classList.add('form-task');
@@ -43,19 +43,19 @@ export function displayCreateTask() {
     $form.classList.add('creation__form');
     $form.innerHTML = `
         <label for="form-title">Title:</label>
-        <input type="text" name="title" id="form-title" required>
+        <input type="text" name="title" id="form-title" required value="${title}">
         <p class="error-message" style="opacity: 0">Add a title that is not repeated!</p>
         <label for="form-details">Details:</label>
-        <textarea type="text" name="details" id="form-details"></textarea>
+        <textarea type="text" name="details" id="form-details" value="${details}">${details}</textarea>
         <label for="form-date">Due date:</label>
-        <input type="date" name="date" id="form-date" required>
+        <input type="date" name="date" id="form-date" required value=${date}>
         <p class="error-message" style="opacity: 0">Due date is required!</p>
         <p class="creation__radio-label">Priority:</p>
-        <input type="radio" name="priority" id="prio-low" required checked>
+        <input type="radio" name="priority" id="prio-low" required ${priolow}>
         <label for="prio-low">Low</label>
-        <input type="radio" name="priority" id="prio-medium">
+        <input type="radio" name="priority" id="prio-medium" ${priomedium}>
         <label for="prio-medium">Medium</label>
-        <input type="radio" name="priority" id="prio-high">
+        <input type="radio" name="priority" id="prio-high" ${priohigh}>
         <label for="prio-high">High</label>
         <label for="form-project-list">Select a project:</label>
     `
@@ -65,7 +65,7 @@ export function displayCreateTask() {
     $datalist.id = 'form-project-list';
 
     const $defaultOption = document.createElement('option');
-    $defaultOption.value = 'Default';
+    $defaultOption.value = 'Home';
     $defaultOption.textContent = '--Default--';
     $datalist.appendChild($defaultOption);
 
@@ -75,13 +75,18 @@ export function displayCreateTask() {
         $option.textContent = projects[i];
         $datalist.appendChild($option);
     }
+
+    $datalist.value = project;
     $form.appendChild($datalist)
     $content.appendChild($form);
 
     const $createButtonContainer = document.createElement('div');
     $createButtonContainer.classList.add('creation__addButton');
+    let textButton = '';
+    if (mode === 'edit') textButton = 'Edit task';
+    else textButton = 'Add task'
     $createButtonContainer.innerHTML = `
-        <button class="btn-addTask btn-add">Add task</button>
+        <button class="btn-addTask btn-add">${textButton}</button>
     `
     $content.appendChild($createButtonContainer);
 
