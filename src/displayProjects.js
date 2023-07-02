@@ -13,6 +13,8 @@ export function displayProjects(tab = 'Home') {
         $item.innerHTML = `
             <input type="radio" name="projects__radio" id="projects__${projects[i]}" class="sidebar__project-checkbox" ${checked}>
             <button><label for="projects__${projects[i]}" class="sidebar__project-button">${projects[i]}</label></button>
+            <button class="sidebar__project-edit-btn">Edit</button>
+            <button class="sidebar__project-delete-btn">Delete</button>
         `
         $projectsList.appendChild($item);
     }

@@ -93,7 +93,7 @@ export function displayCreateTask(mode = 'create', title = '', details = '', dat
     return $content
 }
 
-export function displayCreateProject() {
+export function displayCreateProject(mode = 'create', title = '') {
     const $content = document.createElement('section');
     $content.classList.add('creation__form-container')
     $content.classList.add('form-project');
@@ -101,15 +101,19 @@ export function displayCreateProject() {
     $form.classList.add('creation__form');
     $form.innerHTML = `
         <label for="form-title">Title:</label>
-        <input type="text" name="title" id="form-title" required>
+        <input type="text" name="title" id="form-title" required value=${title}>
         <p class="error-message" style="opacity: 0">Add a title that is not repeated!</p>
     `
     $content.appendChild($form);
 
     const $createButtonContainer = document.createElement('div');
     $createButtonContainer.classList.add('creation__addButton');
+    let buttonText = 'Add project'
+    if (mode === 'edit') {
+        buttonText = 'Edit project'
+    }
     $createButtonContainer.innerHTML = `
-        <button class="btn-addTask btn-add">Add project</button>
+        <button class="btn-addTask btn-add">${buttonText}</button>
     `
     $content.appendChild($createButtonContainer);
 

@@ -5,10 +5,12 @@ import { $content, tasks } from "./index.js";
 import { hideErrorMessage, showErrorMessage } from "./errorMessages";
 import { displayProjects } from "./displayProjects";
 
-export const $editWindow = document.createElement('div');
-$editWindow.classList.add('edit-window');  
 
 export function editTask(task) {
+    
+    const $editWindow = document.createElement('div');
+    $editWindow.classList.add('edit-window');  
+
     const $container = document.createElement('div');
     $container.classList.add('edit-container');
 
@@ -74,6 +76,7 @@ export function editTask(task) {
                     if ($prioLow.checked) task.priority = 'Low';
                     else if ($prioMedium.checked) task.priority = 'Medium';
                     else task.priority = 'High';
+                    closeWindow($content, $editWindow);
                     displayTasks(task.project);
                     displayProjects(task.project);
                 }

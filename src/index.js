@@ -3,19 +3,26 @@ import { $creationWindow, projects } from './creationWindow.js'
 import { displayDetails } from './displayDetails.js';
 import { displayProjects } from './displayProjects.js';
 import { displayTasks } from './displayTasks.js';
-import { editTask, $editWindow } from './editTask.js';
+import { editTask } from './editTask.js';
+import { editProject } from './editProject.js';
 import './style/style.css';
 
 export const $content = document.querySelector('.content');
 export const $sidebar = document.querySelector('.sidebar');
 export const $sidebarItems = $sidebar.querySelector('.sidebar__items');
 export const $tasks = document.querySelectorAll('task');
-export const tasks = [];
+export let tasks = [];
 
 const $btnNew = document.querySelector('.btn-new');
 
 displayProjects();
 displayTasks();
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+    }
+});
 
 $btnNew.addEventListener('click', () => {
     // Display creation window
@@ -26,6 +33,29 @@ $sidebarItems.addEventListener('click', function(event) {
     const target = event.target;
     if (target.classList.contains('sidebar__project-button')) {
         displayTasks(target.textContent);
+    }
+})
+
+$sidebar.addEventListener('click', function(event) {
+    const target = event.target;
+
+    if (target.classList.contains('sidebar__project-edit-btn')) {
+        const projectName = target.parentNode.querySelector('label').textContent;
+        editProject(projectName);
+    }
+
+    if (target.classList.contains('sidebar__project-delete-btn')) {
+        const projectName = target.parentNode.querySelector('label').textContent;
+        const projIndex = projects.findIndex(element => element === projectName);
+        projects.splice(projIndex, 1);
+        tasks.map(element => {
+            if (element.project === projectName) {
+                element.project = 'Home';
+            }
+            return element
+        })
+        displayTasks('Home');
+        displayProjects();
     }
 })
 
