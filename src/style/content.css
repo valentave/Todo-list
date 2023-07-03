@@ -24,14 +24,14 @@
     position: relative;
 }
 
-.task > button {
+.task > button:not(.task-edit-btn, .task-delete-btn) {
     height: 1.5rem;
     padding: 0 1ch;
     border-radius: 5px;
     border: 1px solid var(--blue-1);
 }
 
-.task > button:hover {
+.task > button:not(.task-edit-btn, .task-delete-btn):hover {
     background: var(--blue-1);
     color: white;
 }
@@ -61,4 +61,16 @@
     display: block;
     position: absolute;
     left: 0;
+}
+
+.task-edit-btn, .task-delete-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+.task-edit-btn:not(button):hover, 
+.task-delete-btn:not(button):hover {
+    transform: scale(1.2);
 }

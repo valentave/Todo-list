@@ -11,11 +11,10 @@
     background: rgba(25, 25, 25, 0.5);
 }
 
-.creation-container,
-.edit-container {
+.creation-container, .edit-container {
     background: #fff;
     width: 50vw;
-    height: 51vh;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     border-radius: 10px;
@@ -49,7 +48,7 @@
 .creation__sidebar {
     padding: 10px;
     border-right: 2px solid var(--blue-1);
-    height: calc(100% - 40px);
+    height: calc(100% - 20px);
 }
 
 .creation__sidebar > ul {
@@ -87,7 +86,7 @@
 
 .creation__form-container {
     position: relative;
-    height: calc(100% - 20px);
+    height: 100%;
 }
 
 .btn-add {

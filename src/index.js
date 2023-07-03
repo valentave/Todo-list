@@ -48,12 +48,12 @@ $sidebar.addEventListener('click', function(event) {
     const target = event.target;
 
     if (target.classList.contains('sidebar__project-edit-btn')) {
-        const projectName = target.parentNode.querySelector('label').textContent;
+        const projectName = target.parentNode.parentNode.querySelector('label').textContent;
         editProject(projectName);
     }
 
     if (target.classList.contains('sidebar__project-delete-btn')) {
-        const projectName = target.parentNode.querySelector('label').textContent;
+        const projectName = target.parentNode.parentNode.querySelector('label').textContent;
         const projIndex = projects.findIndex(element => element === projectName);
         projects.splice(projIndex, 1);
         tasks.map(element => {
@@ -71,7 +71,7 @@ $content.addEventListener('click', function(event) {
     const target = event.target;
 
     if (target.classList.contains('task-delete-btn')) {
-        const taskTitle = target.parentNode.querySelector('.task-title').textContent;
+        const taskTitle = target.parentNode.parentNode.querySelector('.task-title').textContent;
         const taskIndex = tasks.findIndex(element => element.title === taskTitle);
         const taskProject = tasks[taskIndex].project;
         tasks.splice(taskIndex, 1);
@@ -79,7 +79,7 @@ $content.addEventListener('click', function(event) {
     }
 
     if (target.classList.contains('task-edit-btn')) {
-        const taskTitle = target.parentNode.querySelector('.task-title').textContent;
+        const taskTitle = target.parentNode.parentNode.querySelector('.task-title').textContent;
         const taskIndex = tasks.findIndex(element => element.title === taskTitle);
         editTask(tasks[taskIndex]);
     }

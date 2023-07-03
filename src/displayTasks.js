@@ -1,5 +1,7 @@
 import { $content } from "./index.js";
 import { tasks } from "./index.js";
+import deleteImg from './images/delete.svg'
+import editImg from './images/edit.svg'
 
 export function displayTasks(tab = 'Home') {
     $content.innerHTML = "";
@@ -41,8 +43,8 @@ export function displayTasks(tab = 'Home') {
             <p class="task-title">${newTasks[i].title}</p>
             <button class="task-details-btn">Details</button>
             <p class="task-title">${formatedDate}</p>
-            <button class="task-edit-btn">Edit</button>
-            <button class="task-delete-btn">Delete</button>
+            <button class="task-edit-btn"><img class="img-btn task-edit-btn" src=${editImg}></button>
+            <button class="task-delete-btn"><img class="img-btn task-delete-btn" src=${deleteImg}></button>
         `
         container.appendChild(task);
     }

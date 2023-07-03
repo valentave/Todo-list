@@ -40,10 +40,18 @@
     background: transparent;
 }
 
-.sidebar__item > button:hover,
-.sidebar__project-item > button:hover {
+.sidebar__item > button:hover, 
+.sidebar__project-item > button:not(.sidebar__project-edit-btn, .sidebar__project-delete-btn):hover {
     background: var(--blue-1);
     color: #fff;
+}
+
+.sidebar__project-edit-btn:not(button):hover, 
+.sidebar__project-delete-btn:not(button):hover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(1.2);
 }
 
 .sidebar__project-button {
