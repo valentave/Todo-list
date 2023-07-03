@@ -10,5 +10,4 @@ ToDo! is a simple task management web application that helps you stay organized 
 
 ## Live preview
 
-You can 
 You can take a look at the app in the following preview: https://valentave.github.io/Todo-list/
