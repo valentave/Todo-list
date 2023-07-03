@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75vw;
+    height: 60vh;
+}
+
+.header {
+    width: calc(100% - 20px);
+    background: var(--blue-1);
+    color: #fff;
+    padding: 10px;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    border-radius: 10px 10px 0 0;
+}
+
+.main {
+    width: calc(100% - 20px);
+    background: #fff;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    height: 90%;
+    border-radius: 0 0 10px 10px;
+}

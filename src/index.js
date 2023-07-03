@@ -7,14 +7,19 @@ import { editTask } from './editTask.js';
 import { editProject } from './editProject.js';
 import { Task } from './Task.js';
 import './style/style.css';
+import './style/container.css';
+import './style/sidebar.css';
+import './style/content.css';
+import './style/creationWindow.css';
+import './style/detailsWindow.css';
 
 export const $content = document.querySelector('.content');
 export const $sidebar = document.querySelector('.sidebar');
 export const $sidebarItems = $sidebar.querySelector('.sidebar__items');
 export const $tasks = document.querySelectorAll('task');
 export let tasks = [];
-tasks.push(new Task('Go for a run','Run through the park at night',1688353200000,'Medium','Sports'))
-tasks.push(new Task('Study Python', 'Take a python course',1688698800000,'High','Study'))
+tasks.push(new Task('Go for a run','Run through the park at night',1688353200000,'Medium','Sports',true))
+tasks.push(new Task('Study Python', 'Take a python course',1688698800000,'High','Study',false))
 
 const $btnNew = document.querySelector('.btn-new');
 

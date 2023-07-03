@@ -1,0 +1,222 @@
+.creation-window,
+.edit-window {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(25, 25, 25, 0.5);
+}
+
+.creation-container,
+.edit-container {
+    background: #fff;
+    width: 50vw;
+    height: 51vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.creation__header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: var(--blue-1);
+    color: #fff;
+    padding-right: 20px;
+    border-radius: 10px 10px 0 0;
+}
+
+.btn-close {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.creation__main {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    flex-grow: 1;
+    padding: 10px;
+    height: calc(100% - 72px);
+}
+
+.creation__sidebar {
+    padding: 10px;
+    border-right: 2px solid var(--blue-1);
+    height: calc(100% - 40px);
+}
+
+.creation__sidebar > ul {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 88%;
+    overflow: auto;
+}
+
+.creation__sidebar > ul > li {
+    border-left: 1px solid var(--blue-1);
+}
+
+.creation__sidebar > ul > li > button {
+    background: transparent;
+    border: none;
+    padding: 1ch;
+    width: 100%;
+    text-align: start;
+}
+
+.creation__task,
+.creation__project {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#creation__task:checked + button,
+#creation__project:checked + button {
+    background-color: var(--blue-1);
+    color: #fff;
+}
+
+.creation__form-container {
+    position: relative;
+    height: calc(100% - 20px);
+}
+
+.btn-add {
+    border: none;
+    padding: 1ch 2ch;
+    background: var(--blue-1);
+    color: #fff;
+    border-radius: 10px;
+}
+
+.creation__form {
+    height: calc(100% - 20px);
+    padding: 10px;
+    gap: 5px;
+    display: grid;
+    grid-template-rows: 1fr 2fr 0.5fr 0.5fr 0.5fr;
+}
+
+.creation__addButton {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px 15px;
+}
+
+.creation__form > div:not(.create-title-project) {
+    display: flex;
+    gap: 5px;
+    width: 100%;
+    align-items: center;
+}
+
+.create-details > label, .create-title > label {
+    align-self: start;
+}
+
+.create-title, .create-details {
+    flex-direction: column;
+}
+
+#form-title {
+    width: calc(100% - 20px);
+    border: none;
+    background: #eee;
+    height: 2rem;
+    font-size: 1rem;
+    padding: 0 10px;
+    border-radius: 10px;
+}
+
+.error-message {
+    color: red;
+}
+
+#form-details {
+    font-size: 1rem;
+    padding: 0 10px;
+    width: calc(100% - 20px);
+    height: 100%;
+    resize: none;
+    border: none;
+    background: #eee;
+    border-radius: 10px;
+}
+
+.create-title >.error-message {
+    align-self: start;
+}
+
+#form-date {
+    text-transform: uppercase;
+    border: none;
+    background: #eee;
+    padding: 0.5ch 1ch;
+    color: var(--blue-1);
+    margin-left: 5px;
+    border-radius: 10px;
+}
+
+#prio-low + label {
+    border: 1px solid var(--prio-low-color);
+    padding: 0.5ch 1ch;
+    border-radius: 10px;
+    color: var(--prio-low-color);
+    cursor: pointer;
+}
+
+#prio-medium + label {
+    border: 1px solid var(--prio-medium-color);
+    padding: 0.5ch 1ch;
+    border-radius: 10px;
+    color: var(--prio-medium-color);
+    cursor: pointer;
+}
+
+#prio-high + label {
+    border: 1px solid var(--prio-high-color);
+    padding: 0.5ch 1ch;
+    border-radius: 10px;
+    color: var(--prio-high-color);
+    cursor: pointer;
+}
+
+#prio-low:checked + label,
+#prio-low + label:hover {
+    background: var(--prio-low-color);
+    color: #fff;
+}
+
+#prio-medium:checked + label,
+#prio-medium + label:hover {
+    background: var(--prio-medium-color);
+    color: #fff;
+}
+
+#prio-high:checked + label,
+#prio-high + label:hover {
+    background: var(--prio-high-color);
+    color: #fff;
+}
+
+#form-project-list {
+    background: #eee;
+    border: none;
+    padding: 0.5ch 1ch;
+    margin-left: 5px;
+    border-radius: 10px;
+}
+
+.create-title-project > #form-title {
+    margin-top: 10px;
+}

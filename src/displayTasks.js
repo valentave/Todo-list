@@ -32,10 +32,12 @@ export function displayTasks(tab = 'Home') {
         const task = document.createElement('div');
         const formatedDate = formatDate(newTasks[i].date);
         task.classList.add('task');
+        let taskChecked = '';
+        if (newTasks[i].checked) taskChecked = 'checked' 
 
         task.innerHTML = `
             <div class="task-${newTasks[i].priority}"></div>
-            <input type="checkbox" name="task-check" class="task-check">
+            <input type="checkbox" name="task-check" class="task-check" ${taskChecked}>
             <p class="task-title">${newTasks[i].title}</p>
             <button class="task-details-btn">Details</button>
             <p class="task-title">${formatedDate}</p>

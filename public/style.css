@@ -1,11 +1,517 @@
 /*!***********************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./src/style/style.css ***!
   \***********************************************************************/
+:root {
+    --blue-1: #4C6793;
+    --prio-low-color: #6cc969;
+    --prio-medium-color: #c9c769;
+    --prio-high-color: #c96969;
+}
+
 * {
     margin: 0;
     padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .hidden {
     display: none;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    height: 100%;
+    background-image: url(701b2d90a644d28e8df2.webp);
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+}
+
+ul {
+    list-style: none;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--blue-1);
+    border-radius: 20px;
+    border: 3px solid #fff;
+}
+
+button, 
+.sidebar__project-button,
+.creation__task,
+.creation__project {
+    cursor: pointer;
+}
+/*!***************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/style/container.css ***!
+  \***************************************************************************/
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75vw;
+    height: 60vh;
+}
+
+.header {
+    width: calc(100% - 20px);
+    background: var(--blue-1);
+    color: #fff;
+    padding: 10px;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    border-radius: 10px 10px 0 0;
+}
+
+.main {
+    width: calc(100% - 20px);
+    background: #fff;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    height: 90%;
+    border-radius: 0 0 10px 10px;
+}
+
+/*!*************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/style/sidebar.css ***!
+  \*************************************************************************/
+.sidebar {
+    padding: 10px;
+    position: relative;
+    border-right: 2px solid var(--blue-1);
+    overflow: hidden;
+}
+
+.sidebar button {
+    font-weight: 700;
+}
+
+.sidebar__items {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 88%;
+    overflow: auto;
+}
+
+.sidebar__button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    width: 50px;
+    font-size: 3rem;
+    line-height: 0;
+    border: none;
+    border-radius: 50%;
+    background: var(--blue-1);
+    color: #fff;
+    padding-bottom: 10px;
+}
+
+.sidebar__item > button {
+    border: none;
+    padding: 1ch;
+    width: 100%;
+    text-align: start;
+    background: transparent;
+}
+
+.sidebar__item > button:hover,
+.sidebar__project-item > button:hover {
+    background: var(--blue-1);
+    color: #fff;
+}
+
+.sidebar__project-button {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar__project-checkbox:checked + button {
+    background-color: var(--blue-1);
+    color: #fff;
+}
+
+.sidebar__projects > p {
+    padding: 1ch;
+}
+
+.sidebar__projects-list {
+    padding: 0 2ch;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.sidebar__project-item {
+    display: grid;
+    grid-template-columns: 5fr 1fr 1fr;
+}
+
+.sidebar__project-item > button {
+    border: none;
+    background: transparent;
+    text-align: start;
+    padding: 1ch;
+}
+
+.sidebar__item:not(.sidebar__projects), 
+.sidebar__project-item {
+    border-left: 1px solid var(--blue-1);
+}
+/*!*************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/style/content.css ***!
+  \*************************************************************************/
+.content {
+    padding: 10px 20px;
+    overflow: auto;
+}
+
+.task-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.task {
+    display: grid;
+    grid-template-columns: 0.5fr 5fr 1fr 3fr 0.8fr 0.8fr;
+    width: 97%;
+    gap: 5px;
+    justify-items: center;
+    background: #eee;
+    line-height: 2rem;
+    align-items: center;
+    padding-right: 10px;
+    padding-left: 10px;
+    position: relative;
+}
+
+.task > button {
+    height: 1.5rem;
+    padding: 0 1ch;
+    border-radius: 5px;
+    border: 1px solid var(--blue-1);
+}
+
+.task > button:hover {
+    background: var(--blue-1);
+    color: white;
+}
+
+.task-Low {
+    background: var(--prio-low-color);
+    width: 5px;
+    height: 2rem;
+    display: block;
+    position: absolute;
+    left: 0;
+}
+
+.task-Medium {
+    background: var(--prio-medium-color);
+    width: 5px;
+    height: 2rem;
+    display: block;
+    position: absolute;
+    left: 0;
+}
+
+.task-High {
+    background: var(--prio-high-color);
+    width: 5px;
+    height: 2rem;
+    display: block;
+    position: absolute;
+    left: 0;
+}
+/*!********************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/style/creationWindow.css ***!
+  \********************************************************************************/
+.creation-window,
+.edit-window {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(25, 25, 25, 0.5);
+}
+
+.creation-container,
+.edit-container {
+    background: #fff;
+    width: 50vw;
+    height: 51vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.creation__header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: var(--blue-1);
+    color: #fff;
+    padding-right: 20px;
+    border-radius: 10px 10px 0 0;
+}
+
+.btn-close {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.creation__main {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    flex-grow: 1;
+    padding: 10px;
+    height: calc(100% - 72px);
+}
+
+.creation__sidebar {
+    padding: 10px;
+    border-right: 2px solid var(--blue-1);
+    height: calc(100% - 40px);
+}
+
+.creation__sidebar > ul {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 88%;
+    overflow: auto;
+}
+
+.creation__sidebar > ul > li {
+    border-left: 1px solid var(--blue-1);
+}
+
+.creation__sidebar > ul > li > button {
+    background: transparent;
+    border: none;
+    padding: 1ch;
+    width: 100%;
+    text-align: start;
+}
+
+.creation__task,
+.creation__project {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#creation__task:checked + button,
+#creation__project:checked + button {
+    background-color: var(--blue-1);
+    color: #fff;
+}
+
+.creation__form-container {
+    position: relative;
+    height: calc(100% - 20px);
+}
+
+.btn-add {
+    border: none;
+    padding: 1ch 2ch;
+    background: var(--blue-1);
+    color: #fff;
+    border-radius: 10px;
+}
+
+.creation__form {
+    height: calc(100% - 20px);
+    padding: 10px;
+    gap: 5px;
+    display: grid;
+    grid-template-rows: 1fr 2fr 0.5fr 0.5fr 0.5fr;
+}
+
+.creation__addButton {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px 15px;
+}
+
+.creation__form > div:not(.create-title-project) {
+    display: flex;
+    gap: 5px;
+    width: 100%;
+    align-items: center;
+}
+
+.create-details > label, .create-title > label {
+    align-self: start;
+}
+
+.create-title, .create-details {
+    flex-direction: column;
+}
+
+#form-title {
+    width: calc(100% - 20px);
+    border: none;
+    background: #eee;
+    height: 2rem;
+    font-size: 1rem;
+    padding: 0 10px;
+    border-radius: 10px;
+}
+
+.error-message {
+    color: red;
+}
+
+#form-details {
+    font-size: 1rem;
+    padding: 0 10px;
+    width: calc(100% - 20px);
+    height: 100%;
+    resize: none;
+    border: none;
+    background: #eee;
+    border-radius: 10px;
+}
+
+.create-title >.error-message {
+    align-self: start;
+}
+
+#form-date {
+    text-transform: uppercase;
+    border: none;
+    background: #eee;
+    padding: 0.5ch 1ch;
+    color: var(--blue-1);
+    margin-left: 5px;
+    border-radius: 10px;
+}
+
+#prio-low + label {
+    border: 1px solid var(--prio-low-color);
+    padding: 0.5ch 1ch;
+    border-radius: 10px;
+    color: var(--prio-low-color);
+    cursor: pointer;
+}
+
+#prio-medium + label {
+    border: 1px solid var(--prio-medium-color);
+    padding: 0.5ch 1ch;
+    border-radius: 10px;
+    color: var(--prio-medium-color);
+    cursor: pointer;
+}
+
+#prio-high + label {
+    border: 1px solid var(--prio-high-color);
+    padding: 0.5ch 1ch;
+    border-radius: 10px;
+    color: var(--prio-high-color);
+    cursor: pointer;
+}
+
+#prio-low:checked + label,
+#prio-low + label:hover {
+    background: var(--prio-low-color);
+    color: #fff;
+}
+
+#prio-medium:checked + label,
+#prio-medium + label:hover {
+    background: var(--prio-medium-color);
+    color: #fff;
+}
+
+#prio-high:checked + label,
+#prio-high + label:hover {
+    background: var(--prio-high-color);
+    color: #fff;
+}
+
+#form-project-list {
+    background: #eee;
+    border: none;
+    padding: 0.5ch 1ch;
+    margin-left: 5px;
+    border-radius: 10px;
+}
+
+.create-title-project > #form-title {
+    margin-top: 10px;
+}
+/*!*******************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/style/detailsWindow.css ***!
+  \*******************************************************************************/
+.task-details-window {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(25, 25, 25, 0.5);
+}
+
+.task-details-container {
+    background: #fff;
+    width: 50vw;
+    height: 25vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.task-details-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: var(--blue-1);
+    color: #fff;
+    padding-right: 20px;
+    border-radius: 10px 10px 0 0;
+}
+
+
+.btn-close-details {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.task-details-main {
+    padding: 10px;
 }

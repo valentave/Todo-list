@@ -1,10 +1,11 @@
 export class Task {
-    constructor(title, details, date, priority, project = 'Home') {
+    constructor(title, details, date, priority, project = 'Home', checked = false) {
         this._title = title;
         this._details = details;
         this._date = date;
         this._priority = priority; 
         this._project = project;
+        this._checked = checked
     }
 
     set title(ttl) {
@@ -40,5 +41,13 @@ export class Task {
     }
     get project() {
         return this._project
+    }
+
+    
+    set checked(chk) {
+        this._checked = chk;
+    }
+    get checked() {
+        return this._checked
     }
 }

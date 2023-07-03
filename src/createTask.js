@@ -18,7 +18,7 @@ export function createTask(title, details, date, priolow, priomedium, priohigh, 
 
     let timestamp = newDate.getTime();
 
-    const task = new Task(title, details, timestamp, prio, project);
+    const task = new Task(title, details, timestamp, prio, project, false);
     tasks.push(task);
     displayTasks(project);
     displayProjects(project);

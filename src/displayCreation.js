@@ -42,23 +42,39 @@ export function displayCreateTask(mode = 'create', title = '', details = '', dat
     const $form = document.createElement('form');
     $form.classList.add('creation__form');
     $form.innerHTML = `
-        <label for="form-title">Title:</label>
-        <input type="text" name="title" id="form-title" required value="${title}">
-        <p class="error-message" style="opacity: 0">Add a title that is not repeated!</p>
-        <label for="form-details">Details:</label>
-        <textarea type="text" name="details" id="form-details" value="${details}">${details}</textarea>
-        <label for="form-date">Due date:</label>
-        <input type="date" name="date" id="form-date" required value=${date}>
-        <p class="error-message" style="opacity: 0">Due date is required!</p>
-        <p class="creation__radio-label">Priority:</p>
-        <input type="radio" name="priority" id="prio-low" required ${priolow}>
-        <label for="prio-low">Low</label>
-        <input type="radio" name="priority" id="prio-medium" ${priomedium}>
-        <label for="prio-medium">Medium</label>
-        <input type="radio" name="priority" id="prio-high" ${priohigh}>
-        <label for="prio-high">High</label>
-        <label for="form-project-list">Select a project:</label>
+        <div class="create-title"> 
+            <label for="form-title">Title:</label>
+            <input type="text" name="title" id="form-title" required value="${title}">
+            <p class="error-message" style="opacity: 0">Add a title that is not repeated!</p>
+        </div>
+        <div class="create-details"> 
+            <label for="form-details">Details:</label>
+            <textarea type="text" name="details" id="form-details" value="${details}">${details}</textarea>
+        </div>
+        <div class="create-date"> 
+            <label for="form-date">Due date:</label>
+            <input type="date" name="date" id="form-date" required value=${date}>
+            <p class="error-message" style="opacity: 0">Due date is required!</p>
+        </div>
+        <div class="create-prio"> 
+            <p class="creation__radio-label">Priority:</p>
+            <input type="radio" name="priority" id="prio-low" required ${priolow}>
+            <label for="prio-low">Low</label>
+            <input type="radio" name="priority" id="prio-medium" ${priomedium}>
+            <label for="prio-medium">Medium</label>
+            <input type="radio" name="priority" id="prio-high" ${priohigh}>
+            <label for="prio-high">High</label>
+        </div>
     `
+
+    const $divSelect = document.createElement('div');
+    $divSelect.classList.add('create-select');
+    $form.appendChild($divSelect);
+
+    const $selectLabel = document.createElement('label');
+    $selectLabel.setAttribute('for','form-project-list');
+    $selectLabel.textContent = 'Select a project:';
+    $divSelect.appendChild($selectLabel);
 
     const $datalist = document.createElement('select');
     $datalist.classList.add('project-selector');
@@ -77,7 +93,7 @@ export function displayCreateTask(mode = 'create', title = '', details = '', dat
     }
 
     $datalist.value = project;
-    $form.appendChild($datalist)
+    $divSelect.appendChild($datalist)
     $content.appendChild($form);
 
     const $createButtonContainer = document.createElement('div');
@@ -100,9 +116,11 @@ export function displayCreateProject(mode = 'create', title = '') {
     const $form = document.createElement('form');
     $form.classList.add('creation__form');
     $form.innerHTML = `
-        <label for="form-title">Title:</label>
-        <input type="text" name="title" id="form-title" required value=${title}>
-        <p class="error-message" style="opacity: 0">Add a title that is not repeated!</p>
+        <div class="create-title-project">
+            <label for="form-title">Title:</label>
+            <input type="text" name="title" id="form-title" required value=${title}>
+            <p class="error-message" style="opacity: 0">Add a title that is not repeated!</p>
+        </div>
     `
     $content.appendChild($form);
 

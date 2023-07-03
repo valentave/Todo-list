@@ -1,0 +1,86 @@
+.sidebar {
+    padding: 10px;
+    position: relative;
+    border-right: 2px solid var(--blue-1);
+    overflow: hidden;
+}
+
+.sidebar button {
+    font-weight: 700;
+}
+
+.sidebar__items {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 88%;
+    overflow: auto;
+}
+
+.sidebar__button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    width: 50px;
+    font-size: 3rem;
+    line-height: 0;
+    border: none;
+    border-radius: 50%;
+    background: var(--blue-1);
+    color: #fff;
+    padding-bottom: 10px;
+}
+
+.sidebar__item > button {
+    border: none;
+    padding: 1ch;
+    width: 100%;
+    text-align: start;
+    background: transparent;
+}
+
+.sidebar__item > button:hover,
+.sidebar__project-item > button:hover {
+    background: var(--blue-1);
+    color: #fff;
+}
+
+.sidebar__project-button {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar__project-checkbox:checked + button {
+    background-color: var(--blue-1);
+    color: #fff;
+}
+
+.sidebar__projects > p {
+    padding: 1ch;
+}
+
+.sidebar__projects-list {
+    padding: 0 2ch;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.sidebar__project-item {
+    display: grid;
+    grid-template-columns: 5fr 1fr 1fr;
+}
+
+.sidebar__project-item > button {
+    border: none;
+    background: transparent;
+    text-align: start;
+    padding: 1ch;
+}
+
+.sidebar__item:not(.sidebar__projects), 
+.sidebar__project-item {
+    border-left: 1px solid var(--blue-1);
+}
