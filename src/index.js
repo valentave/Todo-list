@@ -18,6 +18,7 @@ export const $sidebar = document.querySelector('.sidebar');
 export const $sidebarItems = $sidebar.querySelector('.sidebar__items');
 export const $tasks = document.querySelectorAll('task');
 export let tasks = [];
+const $hamburgerBtn = document.querySelector('.hamburger-btn');
 tasks.push(new Task('Go for a run','Run through the park at night',1688353200000,'Medium','Sports',true))
 tasks.push(new Task('Study Python', 'Take a python course',1688698800000,'High','Study',false))
 
@@ -25,6 +26,10 @@ const $btnNew = document.querySelector('.btn-new');
 
 displayProjects();
 displayTasks();
+
+$hamburgerBtn.addEventListener('click', () =>{
+    $sidebar.classList.toggle('sidebar-open');
+})
 
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
@@ -35,11 +40,13 @@ document.addEventListener('keydown', function(event) {
 $btnNew.addEventListener('click', () => {
     // Display creation window
     $content.appendChild($creationWindow);
+    $sidebar.classList.toggle('sidebar-open');
 })
 
 $sidebarItems.addEventListener('click', function(event) {
     const target = event.target;
     if (target.classList.contains('sidebar__project-button')) {
+        $sidebar.classList.toggle('sidebar-open');
         displayTasks(target.textContent);
     }
 })
@@ -49,6 +56,7 @@ $sidebar.addEventListener('click', function(event) {
 
     if (target.classList.contains('sidebar__project-edit-btn')) {
         const projectName = target.parentNode.parentNode.querySelector('label').textContent;
+        $sidebar.classList.toggle('sidebar-open');
         editProject(projectName);
     }
 

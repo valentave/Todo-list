@@ -29,6 +29,13 @@
     border-radius: 10px 10px 0 0;
 }
 
+.task-details-main {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
 
 .btn-close-details {
     background: transparent;
@@ -39,4 +46,16 @@
 
 .task-details-main {
     padding: 10px;
+}
+
+@media (max-width: 1080px) {
+    .task-details-window {
+        position: fixed;
+    }
+
+    .task-details-container {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+    }
 }

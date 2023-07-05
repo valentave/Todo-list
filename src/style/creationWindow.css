@@ -219,3 +219,33 @@
 .create-title-project > #form-title {
     margin-top: 10px;
 }
+
+@media (max-width: 1080px) {
+    .creation-window {
+        position: fixed;
+    }
+
+    .creation-container {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .creation__header {
+        border-radius: 0;
+    }
+
+    .creation__form {
+        grid-template-rows: 1fr 5fr 1fr 1fr;
+    }    
+
+    .edit-window {
+        position: fixed;
+    }
+
+    .edit-container {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+    }
+}
